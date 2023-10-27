@@ -1,0 +1,165 @@
+<h1>
+  <a id="title-link" href="."
+    >The Algorithms Playground - <span id="language">PHP</span></a
+  >
+</h1>
+<p class="languages">
+  Switch to:
+  <a href="https://hatemhosny.github.io/thealgorithms-javascript/"
+    >JavaScript</a
+  >
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-javascript/?lang=ts"
+    >TypeScript</a
+  >
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-python/"
+    >Python</a
+  >
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-r/"
+    >R</a
+  >
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-ruby/"
+    >Ruby</a
+  >
+</p>
+<p>
+  Algorithm:
+  <select id="algorithm-select"></select>
+</p>
+<p>(<a target="_blank" id="source-link">Source</a>)</p>
+<div id="container" style="height: 80vh"></div>
+
+<div id="footer">
+  <p>
+    This page was built in
+    <a href="https://livecodes.io/" target="_blank">LiveCodes</a>
+    and
+    <a href="https://livecodes.io/docs/features/deploy" target="_blank"
+      >deployed</a
+    >
+    to GitHub Pages.
+  </p>
+  <p>
+    <a
+      href="https://livecodes.io/?activeEditor=script&x=https://github.com/hatemhosny/thealgorithms-ruby/tree/gh-pages/src"
+      target="_blank"
+      >Edit in LiveCodes</a
+    >
+    -
+    <a
+      href="https://github.com/hatemhosny/thealgorithms-ruby/"
+      target="_blank"
+      >View on GitHub</a
+    >
+  </p>
+</div>
+
+<script>
+  const algorithms = [
+    "Ciphers/AtbashCipher",
+    "Ciphers/CaesarCipher",
+    "Ciphers/MonoAlphabeticCipher",
+    "Ciphers/MorseCode",
+    "Ciphers/RailfenceCipher",
+    "Ciphers/VignereCipher",
+    "Ciphers/XORCipher",
+    "Conversions/BinaryToDecimal",
+    "Conversions/DecimalToBinary",
+    "Conversions/HexadecimalToDecimal",
+    "Conversions/OctalToDecimal",
+    "Conversions/SpeedConversion",
+    "DataStructures/DoublyLinkedList",
+    "DataStructures/Node",
+    "DataStructures/SinglyLinkedList",
+    "DataStructures/Stack",
+    "Graphs/BreadthFirstSearch",
+    "Graphs/DepthFirstSearch",
+    "Maths/AbsoluteMax",
+    "Maths/AbsoluteMin",
+    "Maths/ArmstrongNumber",
+    "Maths/CheckPalindrome",
+    "Maths/CheckPrime",
+    "Maths/Factorial",
+    "Maths/FastExponentiation",
+    "Maths/Fibonacci",
+    "Maths/Fibonacci2",
+    "Maths/GreatestCommonDivisor",
+    "Maths/Mean",
+    "Maths/Median",
+    "Maths/Mode",
+    "Maths/NeonNumber",
+    "Maths/PerfectSquare",
+    "Maths/ProjectEuler/Problem1",
+    "Maths/ProjectEuler/Problem10",
+    "Maths/ProjectEuler/Problem11",
+    "Maths/ProjectEuler/Problem2",
+    "Maths/ProjectEuler/Problem3",
+    "Maths/ProjectEuler/Problem4",
+    "Maths/ProjectEuler/Problem5",
+    "Maths/ProjectEuler/Problem6",
+    "Maths/ProjectEuler/Problem7",
+    "Maths/ProjectEuler/Problem8",
+    "Maths/ProjectEuler/Problem9",
+    "Searches/BinarySearch",
+    "Searches/ExponentialSearch",
+    "Searches/FibonacciSearch",
+    "Searches/InterpolationSearch",
+    "Searches/JumpSearch",
+    "Searches/LinearSearch",
+    "Searches/LowerBound",
+    "Searches/TernarySearch",
+    "Searches/UpperBound",
+    "Sorting/ArrayKeysSort",
+    "Sorting/BubbleSort",
+    "Sorting/BubbleSort2",
+    "Sorting/CountSort",
+    "Sorting/GnomeSort",
+    "Sorting/HeapSort",
+    "Sorting/InsertionSort",
+    "Sorting/MergeSort",
+    "Sorting/QuickSort",
+    "Sorting/RadixSort",
+    "Sorting/SelectionSort",
+    "Strings/CheckAnagram",
+    "Strings/CheckPalindrome",
+    "Strings/CheckPalindrome2",
+    "Strings/CountConsonants",
+    "Strings/CountSentences",
+    "Strings/CountVowels",
+    "Strings/Distance",
+    "Strings/MaxCharacter",
+    "Strings/ReverseString",
+    "Strings/ReverseWords",
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  window.lang = {
+    name: "php-wasm",
+    title: "PHP",
+    ext: "php",
+    repo: "https://github.com/TheAlgorithms/PHP",
+    algorithms,
+    defaultAlgorithm: "Searches/BinarySearch",
+  };
+
+  window.algorithmSelect = document.getElementById("algorithm-select");
+  document.getElementById("source-link").href = window.lang.repo;
+  document.getElementById("language").innerText = window.lang.title;
+
+  algorithms.forEach((algorithm) => {
+    const option = document.createElement("option");
+    option.value = algorithm;
+    option.innerText = algorithm;
+    option.id = algorithm;
+    algorithmSelect.appendChild(option);
+  });
+
+  const selected =
+    (params.get("algorithm") &&
+      algorithms.find((algorithm) => algorithm === params.get("algorithm"))) ||
+    window.lang.defaultAlgorithm;
+  document.getElementById(selected).selected = true;
+</script>
